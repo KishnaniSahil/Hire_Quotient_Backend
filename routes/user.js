@@ -1,0 +1,12 @@
+const express = require("express");
+const router = express.Router();
+const { signup } = require("../controllers/signup");
+const { login } = require("../controllers/login");
+const { update } = require("../controllers/update");
+const { deleteUser } = require("../controllers/delete");
+const { auth } = require("../middleware/authentication");
+router.post("/signup", signup);
+router.post("/login", login);
+router.put("/update/:id", auth, update);
+router.delete("/delete/:id", auth, deleteUser);
+module.exports = router;
